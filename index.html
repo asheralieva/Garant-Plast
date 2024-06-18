@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Модальное окно</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__content">
+          <div class="header__logo">
+            <img
+              src="./assets/img/garantplast_logo5-transformed.png"
+              alt="logo"
+            />
+          </div>
+
+          <div class="header__links">
+            <a href="">На главную</a>
+            <a href="">Продукция</a>
+            <a href="">Оплата и доставка</a>
+          </div>
+
+          <div class="header__order_btn">
+            <!-- Кнопка для открытия модального окна -->
+            <button id="openModalBtn">заказать звонок</button>
+
+            <!-- Модальное окно -->
+            <div id="myModal" class="modal">
+              <div class="modal__container">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="text">
+                        <p>Вы создаете уют </p>
+                        <div id="first"></div>
+                        <p>мы заботимся о комфорте</p>
+                        <span class="sec"></span>
+                    </div>
+                    <div class="order__modal">
+                      <p>Заказать обратный звонок</p>
+                      <input type="телефон"/>
+                      
+                    </div>
+                    <button>Перезвоните мне!</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="header__contact">+996 776 45-69-21</div>
+        </div>
+      </div>
+    </header>
+
+    <script src="./js/header.js"></script>
+  </body>
+</html>

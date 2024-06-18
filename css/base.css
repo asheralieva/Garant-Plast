@@ -1,0 +1,17 @@
+body{
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #e5e2e2;
+   
+}
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0 auto;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}

@@ -1,0 +1,121 @@
+/* Стили для модального окна */
+.modal {
+  display: none; /* Скрываем модальное окно по умолчанию */
+  position: fixed; /* Фиксированное позиционирование */
+  z-index: 1; /* Расположим модальное окно над другими элементами */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включаем прокрутку если содержимого много */
+  background-color: rgb(0, 0, 0); /* Цвет фона */
+  background-color: rgba(0, 0, 0, 0.4); /* Добавляем прозрачность */
+}
+
+.modal__container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Стили для модального контента */
+.modal-content {
+  font-family: "Open Sans";
+  background-color: #fefefe;
+  margin: 15% auto; /* Центрируем модальное окно */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ширина модального окна */
+}
+.modal-content p {
+  color: #000;
+  font-size: 18px;
+  font-weight: 200;
+}
+.text {
+  position: relative;
+}
+#first {
+  position: absolute;
+  width: 220px;
+  background-color: rgb(27, 138, 101);
+  height: 10px;
+  top: 34px;
+  left: 0;
+}
+
+.order__modal {
+  margin-top: 50px;
+  text-align: center;
+}
+.order__modal p {
+  font-size: 21px;
+  font-weight: 200;
+  color: rgb(27, 138, 101);
+}
+.order__modal input {
+  margin-top: 30px;
+  border-color: rgb(27, 138, 101);
+  width: 300px;
+  height: 30px;
+}
+
+/* 
+не смогла сцентрировать
+*/
+
+.modal-content button {
+  font-family: "Open Sans";
+  width: 160px;
+  height: 50px;
+  background-color: rgb(27, 138, 101);
+  border: none;
+  color: #fff;
+  margin-top: 49px;
+}
+
+/* Стили для кнопки закрытия */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header__content {
+  background-color: #fff;
+  padding: 25px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 2px solid #999;
+}
+.header__logo img {
+  width: 100px;
+  height: 100px;
+}
+.header__links {
+  display: flex;
+  gap: 25px;
+}
+.header__links a,
+.header__contact {
+  color: rgb(48, 43, 43);
+  font-size: 18px;
+  font-weight: 200;
+}
+#openModalBtn {
+  appearance: none;
+  border: none;
+  text-decoration: underline;
+  background: transparent;
+  font-size: 18px;
+  color: rgb(27, 138, 101);
+}
