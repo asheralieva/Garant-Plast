@@ -20,12 +20,12 @@
           <div class="header__links">
             <a href="">На главную</a>
             <a href="">Продукция</a>
-            <a href="">Оплата и доставка</a>
+            <a href="">Контакты</a>
           </div>
 
           <div class="header__order_btn">
             <!-- Кнопка для открытия модального окна -->
-            <button id="openModalBtn">заказать звонок</button>
+            <button id="openModalBtn">Подробнее</button>
 
             <!-- Модальное окно -->
             <div id="myModal" class="modal">
@@ -33,16 +33,19 @@
                 <div class="modal-content">
                   <span class="close">&times;</span>
                   <div class="text">
-                    <p>Вы создаете уют</p>
-                    <div id="first"></div>
-                    <p>мы заботимся о комфорте</p>
-                    <span class="sec"></span>
+                    <p class="line">Вы создаете уют</p>
+                    <p class="underline">мы заботимся о комфорте</p>
                   </div>
                   <div class="order__modal">
-                    <p>Заказать обратный звонок</p>
-                    <input type="телефон" />
+                    <span>Важно: Оформление заказов</span>
+                    <p>
+                      Для обеспечения высокого качества обслуживания и точного
+                      понимания ваших потребностей, все заказы принимаются
+                      исключительно при личной встрече в нашем офисе. Это
+                      позволит нам уделить вам максимальное внимание, учесть все
+                      ваши пожелания и гарантировать лучшее выполнение заказа.
+                    </p>
                   </div>
-                  <button>Перезвоните мне!</button>
                 </div>
               </div>
             </div>
@@ -76,8 +79,54 @@
         </div>
       </div>
     </section>
-    
+
+    <section class="about">
+      <div class="container">
+        <div class="about__content">
+          <div class="about__inner">
+
+            <div class="about__inner__left">
+              <img src="./assets/icons/about-price.svg" alt="price" />
+              <p>Низкие цены без посредников</p>
+              <img src="./assets/icons/about-deadline.svg" alt="deadline">
+            <p>Точные сроки изготовления по договору</p>
+            </div>
+            
+            
+            <div class="about__inner__right">
+            
+              <img src="./assets/icons/about-truck.svg" alt="truck">
+              <p>Доставка и монтаж за 1 день</p>
+  
+              <img src="./assets/icons/about-experience.svg" alt="experience">
+              <p>Опыт монтажных бригад более 15 лет</p>
+            </div>
+          </div>
+
+         
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="products">
+      <div class="container">
+        <div class="products__content">
+          <h2>Наша продукция и услуги</h2>
+
+          <div class="products__inner">
+            <img  class="window" src="./assets/img/products-window.jpg" alt="window">
+            <h3>ПЛАСТИКОВЫЕ<span> ОКНА</span></h3>
+            <div class="products__more">
+              <a href="">
+                <img src="./assets/icons/products-more.svg" alt="more">
+                перейти на страницу</a></div>
+          </div>
+
+        </div>
+      </div>
+    </section> -->
 
     <script src="./js/header.js"></script>
   </body>
 </html>
+

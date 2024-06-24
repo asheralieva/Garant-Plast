@@ -1,0 +1,22 @@
+.products__content h2{
+    margin-top: 150px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+    color: rgb(27, 138, 101);
+}
+
+.window{
+    position: relative;
+
+}
+.products__inner h3{
+    position: absolute;
+}
+.products__more{
+    position: absolute;
+}
+
+
+
+

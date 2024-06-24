@@ -1,0 +1,21 @@
+.about__inner img{
+    width: 70px;
+    height: 70px;
+}
+
+.about__inner{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+    font-size: 21px;
+    font-weight: 400;
+    color: rgb(27, 138, 101);
+}
+.about__inner__left,
+.about__inner__right{ 
+    text-align: center;
+}
+.about__inner__left img,
+.about__inner__right img{
+    margin: 15px 0;
+}

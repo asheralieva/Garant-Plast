@@ -19,12 +19,17 @@
 
 /* Стили для модального контента */
 .modal-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   font-family: "Open Sans";
   background-color: #fefefe;
   margin: 15% auto; /* Центрируем модальное окно */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Ширина модального окна */
+  position: relative;
 }
 .modal-content p {
   color: #000;
@@ -32,55 +37,73 @@
   font-weight: 200;
 }
 .text {
-  position: relative;
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  z-index: 10;
 }
-#first {
+
+.line{
+  position: relative;
+  z-index: 10;
+}
+
+.line::after{
+  content: "";
+  position: absolute;
+  width: 138px;
+  background-color: rgb(27, 138, 101);
+  height: 10px;
+  top: 12px;
+  left: 0;
+  z-index: -9;
+}
+
+.underline{
+  position: relative;
+  z-index: 10;
+}
+
+.underline::after{
+  content: "";
   position: absolute;
   width: 220px;
   background-color: rgb(27, 138, 101);
   height: 10px;
-  top: 34px;
+  top: 12px;
   left: 0;
+  z-index: -9;
 }
 
 .order__modal {
-  margin-top: 50px;
+  margin-top: 100px;
   text-align: center;
 }
 .order__modal p {
+  margin-top: 50px;
+  max-width: 450px;
+
   font-size: 21px;
   font-weight: 200;
   color: rgb(27, 138, 101);
 }
-.order__modal input {
-  margin-top: 30px;
-  border-color: rgb(27, 138, 101);
-  width: 300px;
-  height: 30px;
-}
-
-/* 
-не смогла сцентрировать
-*/
-
-.modal-content button {
-  font-family: "Open Sans";
-  width: 160px;
-  height: 50px;
-  background-color: rgb(27, 138, 101);
-  border: none;
-  color: #fff;
-  margin-top: 49px;
-}
 
 /* Стили для кнопки закрытия */
 .close {
+  position: absolute;
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  top: 15px;
+  right: 20px;
 }
+.order__modal span{
+  font-weight: 700;
+  font-size: 32px;
+  color: rgb(27, 138, 101);
 
+}
 .close:hover,
 .close:focus {
   color: black;
@@ -89,7 +112,7 @@
 }
 
 .header__content {
-  background-color: #fff;
+  background-color: #e5e2e2;
   padding: 25px;
   margin-top: 5px;
   display: flex;
