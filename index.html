@@ -1,132 +1,1631 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Модальное окно</title>
-    <link rel="stylesheet" href="index.css" />
+    <title>
+      Гарант Пласт - Окна, Двери, Витражи | Производство с 2007 года
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ff5a5f;
+        --primary-dark: #e04e52;
+        --secondary: #008489;
+        --dark: #222222;
+        --light: #f7f7f7;
+        --gray: #717171;
+        --border: #dddddd;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        --header-height: 100px;
+        --header-shrink-height: 80px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        padding-top: var(--header-height);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        transition: var(--transition);
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        left: 0;
+        right: 0;
+      }
+
+      header.shrink {
+        height: var(--header-shrink-height);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        transition: var(--transition);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .logo-icon {
+        font-size: 28px;
+        color: var(--primary);
+        margin-right: 10px;
+        transition: var(--transition);
+      }
+
+      .logo-text {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--dark);
+        transition: var(--transition);
+      }
+
+      header.shrink .logo-icon {
+        font-size: 24px;
+      }
+
+      header.shrink .logo-text {
+        font-size: 19px;
+      }
+
+      .logo span {
+        color: var(--primary);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav li {
+        margin-left: 30px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      nav a:hover {
+        color: var(--primary);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: var(--transition);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .phone {
+        font-weight: 600;
+        color: var(--dark);
+        text-decoration: none;
+        margin-right: 20px;
+        transition: var(--transition);
+        white-space: nowrap;
+      }
+
+      .phone:hover {
+        color: var(--primary);
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--primary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(255, 90, 95, 0.3);
+      }
+
+      .btn-sm {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+
+      .btn-secondary {
+        background: var(--secondary);
+      }
+
+      .btn-secondary:hover {
+        background: #006c70;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80")
+            center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-btns {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      /* Features Section */
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .feature-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        text-align: center;
+        padding: 30px 20px;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .feature-card.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 50px;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .feature-card h3 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      /* Products Slider */
+      .products {
+        background: var(--light);
+      }
+
+      .products-slider {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        height: 500px;
+      }
+
+      .slider-container {
+        display: flex;
+        transition: transform 0.5s ease;
+        height: 100%;
+      }
+
+      .slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .slide-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slide-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 30px;
+      }
+
+      .slide-content h3 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+      }
+
+      .slider-btn {
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--dark);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1.2rem;
+      }
+
+      .slider-btn:hover {
+        background: white;
+      }
+
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--border);
+        margin: 0 5px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .dot.active {
+        background: var(--primary);
+      }
+
+      /* Calculator */
+      .calculator {
+        background: white;
+      }
+
+      .calculator-container {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .calculator-form {
+        flex: 1;
+        background: var(--light);
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      .calculator-form.animate {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .calculator-result {
+        flex: 1;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      .calculator-result.animate {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.6s ease, transform 0.6s ease 0.2s;
+      }
+
+      .price-display {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin: 20px 0;
+        transition: all 0.3s ease;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      select,
+      input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+      }
+
+      .range-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .range-value {
+        min-width: 50px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      /* How It Works */
+      .steps {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+        position: relative;
+      }
+
+      .steps::before {
+        content: "";
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--border);
+        z-index: 1;
+      }
+
+      .step {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        flex: 1;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .step.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .step:nth-child(1).animate {
+        transition-delay: 0.1s;
+      }
+      .step:nth-child(2).animate {
+        transition-delay: 0.2s;
+      }
+      .step:nth-child(3).animate {
+        transition-delay: 0.3s;
+      }
+      .step:nth-child(4).animate {
+        transition-delay: 0.4s;
+      }
+
+      .step-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: white;
+        font-size: 30px;
+        box-shadow: 0 6px 15px rgba(255, 90, 95, 0.3);
+      }
+
+      .step h3 {
+        margin-bottom: 10px;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        background: var(--light);
+      }
+
+      .testimonial-slider {
+        max-width: 800px;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .testimonial-container {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .testimonial {
+        min-width: 100%;
+        padding: 40px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .testimonial.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .testimonial-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px;
+        border: 3px solid var(--primary);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .testimonial-author {
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 40px;
+        margin: 0 auto;
+      }
+
+      .contact-info-box {
+        background: var(--light);
+        max-width: 350px;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+
+      .contact-map {
+        max-width: 1200px;
+      }
+
+      .contact-info-box.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .contact-item {
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: center;
+      }
+
+      .contact-icon {
+        min-width: 40px;
+        font-size: 20px;
+        color: var(--primary);
+      }
+
+      .contact-text {
+        text-align: left;
+        margin-left: 15px;
+      }
+
+      .contact-info-box h3 {
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .contact-info-box h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: var(--primary);
+      }
+
+      .policy-text {
+        margin-top: 30px;
+        font-style: italic;
+        padding: 15px;
+        background: rgba(255, 90, 95, 0.1);
+        border-radius: 8px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 60px 0 30px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: var(--primary);
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col a {
+        color: #bbbbbb;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-col a:hover {
+        color: white;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        justify-content: center;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: #333333;
+        border-radius: 50%;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .social-link:hover {
+        background: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid #444444;
+        color: #bbbbbb;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--dark);
+      }
+
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease;
+        padding: 20px 0;
+      }
+
+      .mobile-menu.active {
+        transform: translateY(0);
+      }
+
+      .mobile-menu ul {
+        list-style: none;
+      }
+
+      .mobile-menu li {
+        margin-bottom: 15px;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .mobile-menu a:hover {
+        background: var(--light);
+        color: var(--primary);
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .calculator-container {
+          flex-direction: column;
+        }
+
+        .steps {
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .steps::before {
+          display: none;
+        }
+
+        .step {
+          display: flex;
+          align-items: center;
+          text-align: left;
+        }
+
+        .step-icon {
+          margin: 0 20px 0 0;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .hero-btns .btn {
+          width: 300px;
+        }
+
+        nav ul {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+        .mobile-menu {
+          display: block;
+        }
+
+        .hero-btns {
+          align-items: center;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-info {
+          display: none;
+        }
+
+        .phone {
+          margin-right: 10px;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .contact-info-box {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 35px;
+          max-width: fit-content;
+          padding: 30px 20px;
+        }
+
+        .policy-text {
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .feature-card {
+          padding: 20px 15px;
+        }
+
+        .slide-content {
+          padding: 15px;
+        }
+
+        .slide-content h3 {
+          font-size: 1.5rem;
+        }
+
+        .step {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .step-icon {
+          margin: 0 auto 15px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="header">
-      <div class="container">
-        <div class="header__content">
-          <div class="header__logo">
-            <img
-              src="./assets/img/garantplast_logo5-transformed.png"
-              alt="logo"
-            />
-          </div>
-
-          <div class="header__links">
-            <a href="">На главную</a>
-            <a href="">Продукция</a>
-            <a href="">Контакты</a>
-          </div>
-
-          <div class="header__order_btn">
-            <!-- Кнопка для открытия модального окна -->
-            <button id="openModalBtn">Подробнее</button>
-
-            <!-- Модальное окно -->
-            <div id="myModal" class="modal">
-              <div class="modal__container">
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <div class="text">
-                    <p class="line">Вы создаете уют</p>
-                    <p class="underline">мы заботимся о комфорте</p>
-                  </div>
-                  <div class="order__modal">
-                    <span>Важно: Оформление заказов</span>
-                    <p>
-                      Для обеспечения высокого качества обслуживания и точного
-                      понимания ваших потребностей, все заказы принимаются
-                      исключительно при личной встрече в нашем офисе. Это
-                      позволит нам уделить вам максимальное внимание, учесть все
-                      ваши пожелания и гарантировать лучшее выполнение заказа.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="header__contact">+996 776 45-69-21</div>
+    <!-- Header -->
+    <header id="header">
+      <div class="container header-container">
+        <a href="#" class="logo">
+          <div class="logo-icon"><i class="fas fa-home"></i></div>
+          <div class="logo-text">Гарант<span>Пласт</span></div>
+        </a>
+        <nav class="desktop-nav">
+          <ul>
+            <li><a href="#products">Продукция</a></li>
+            <li><a href="#features">Преимущества</a></li>
+            <li><a href="#calculator">Калькулятор</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </nav>
+        <div class="contact-info">
+          <a href="#contact" class="btn btn-sm">Записаться на встречу</a>
         </div>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </header>
 
-    <section class="navigation">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
       <div class="container">
-        <div class="navigation__content">
-          <a href="">ОКНА</a>
-          <a href="">ДВЕРИ</a>
-          <a href="">ВИТРАЖИ</a>
-          <a href="">МОСКИТНЫЕ СЕТКИ</a>
-          <a href="">ПОДОКОННИКИ</a>
+        <ul>
+          <li><a href="#products">Продукция</a></li>
+          <li><a href="#features">Преимущества</a></li>
+          <li><a href="#calculator">Калькулятор</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+        <div class="mobile-contact" style="padding: 20px">
+          <a
+            href="#contact"
+            class="btn btn-sm"
+            style="display: block; text-align: center"
+            >Записаться на встречу</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Производство окон, дверей и витражей с 2007 года</h1>
+        <p>
+          Высокое качество, низкие цены без посредников, доставка и монтаж за 1
+          день
+        </p>
+        <div class="hero-btns">
+          <a href="#calculator" class="btn">Рассчитать стоимость</a>
+          <a href="#contact" class="btn btn-secondary">Записаться на встречу</a>
         </div>
       </div>
     </section>
 
-    <section class="main">
+    <!-- Features Section -->
+    <section id="features" class="section">
       <div class="container">
-        <div class="main__content">
-          <div class="main__title">
-            <h2>Гарант Пласт</h2>
-            <p>производим окна с 2007 года</p>
+        <div class="section-title">
+          <h2>Наши преимущества</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-ruble-sign"></i></div>
+            <h3>Низкие цены</h3>
+            <p>
+              Прямое производство без посредников позволяет нам предлагать
+              лучшие цены на рынке
+            </p>
           </div>
-          <p class="maid">производство Турция, Россия</p>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Скорость</h3>
+            <p>
+              Доставка и профессиональный монтаж всего за 1 день после
+              изготовления
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-file-contract"></i></div>
+            <h3>Гарантия сроков</h3>
+            <p>Точные сроки изготовления с фиксацией в договоре</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>Опыт</h3>
+            <p>Монтажные бригады с опытом работы более 15 лет</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="about">
+    <!-- Products Section -->
+    <section id="products" class="section products">
       <div class="container">
-        <div class="about__content">
-          <div class="about__inner">
-
-            <div class="about__inner__left">
-              <img src="./assets/icons/about-price.svg" alt="price" />
-              <p>Низкие цены без посредников</p>
-              <img src="./assets/icons/about-deadline.svg" alt="deadline">
-            <p>Точные сроки изготовления по договору</p>
+        <div class="section-title">
+          <h2>Наша продукция</h2>
+        </div>
+        <div class="products-slider">
+          <div class="slider-container">
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80"
+                alt="Окна"
+                class="slide-img"
+              />
+              <div class="slide-content">
+                <h3>Пластиковые окна</h3>
+                <p>Энергоэффективные окна с повышенной шумоизоляцией</p>
+              </div>
             </div>
-            
-            
-            <div class="about__inner__right">
-            
-              <img src="./assets/icons/about-truck.svg" alt="truck">
-              <p>Доставка и монтаж за 1 день</p>
-  
-              <img src="./assets/icons/about-experience.svg" alt="experience">
-              <p>Опыт монтажных бригад более 15 лет</p>
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1452&q=80"
+                alt="Двери"
+                class="slide-img"
+              />
+              <div class="slide-content">
+                <h3>Входные и межкомнатные двери</h3>
+                <p>Прочные и эстетичные решения для любого интерьера</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img
+                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Витражи"
+                class="slide-img"
+              />
+              <div class="slide-content">
+                <h3>Витражи</h3>
+                <p>Эксклюзивные решения для создания уникального интерьера</p>
+              </div>
             </div>
           </div>
-
-         
+          <div class="slider-nav">
+            <div class="slider-btn prev-btn">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider-btn next-btn">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+          <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- <section class="products">
+    <!-- Calculator Section -->
+    <section id="calculator" class="section calculator">
       <div class="container">
-        <div class="products__content">
-          <h2>Наша продукция и услуги</h2>
-
-          <div class="products__inner">
-            <img  class="window" src="./assets/img/products-window.jpg" alt="window">
-            <h3>ПЛАСТИКОВЫЕ<span> ОКНА</span></h3>
-            <div class="products__more">
-              <a href="">
-                <img src="./assets/icons/products-more.svg" alt="more">
-                перейти на страницу</a></div>
+        <div class="section-title">
+          <h2>Калькулятор стоимости</h2>
+        </div>
+        <div class="calculator-container">
+          <div class="calculator-form">
+            <h3>Рассчитайте стоимость изделий</h3>
+            <div class="form-group">
+              <label for="product-type">Тип изделия</label>
+              <select id="product-type">
+                <option value="window">Пластиковое окно</option>
+                <option value="door">Входная дверь</option>
+                <option value="interior-door">Межкомнатная дверь</option>
+                <option value="stained-glass">Витражи</option>
+                <option value="windowsill">Подоконник</option>
+                <option value="mosquito-net">Москитная сетка</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="width">Ширина (см)</label>
+              <div class="range-container">
+                <input type="range" id="width" min="50" max="300" value="150" />
+                <div class="range-value" id="width-value">150</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="height">Высота (см)</label>
+              <div class="range-container">
+                <input
+                  type="range"
+                  id="height"
+                  min="50"
+                  max="300"
+                  value="120"
+                />
+                <div class="range-value" id="height-value">120</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="material">Материал</label>
+              <select id="material">
+                <option value="plastic">Пластик (ПВХ)</option>
+                <option value="aluminum">Алюминий</option>
+                <option value="wood">Дерево</option>
+                <option value="composite">Композитный</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="color">Цвет</label>
+              <select id="color">
+                <option value="white">Белый</option>
+                <option value="wood">Под дерево</option>
+                <option value="colored">Цветной</option>
+              </select>
+            </div>
+            <button class="btn" id="calculate-btn">Рассчитать</button>
           </div>
-
+          <div class="calculator-result">
+            <h3>Примерная стоимость</h3>
+            <div class="price-display">12 500 ₽</div>
+            <p>
+              Точную стоимость вы сможете узнать при личной встрече в нашем
+              офисе
+            </p>
+            <p>Мы учитываем все ваши пожелания и особенности помещения</p>
+            <a href="#contact" class="btn btn-secondary"
+              >Записаться на встречу</a
+            >
+          </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
-    <script src="./js/header.js"></script>
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Как мы работаем</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-calendar-check"></i></div>
+            <h3>Запись на встречу</h3>
+            <p>Запишитесь на встречу в нашем офисе для обсуждения деталей</p>
+          </div>
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-pencil-ruler"></i></div>
+            <h3>Проектирование</h3>
+            <p>Наши специалисты разрабатывают индивидуальный проект</p>
+          </div>
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-hammer"></i></div>
+            <h3>Производство</h3>
+            <p>Изготовление продукции на наших заводах в России и Турции</p>
+          </div>
+          <div class="step">
+            <div class="step-icon"><i class="fas fa-truck"></i></div>
+            <h3>Доставка и монтаж</h3>
+            <p>Быстрая доставка и профессиональный монтаж за 1 день</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>Отзывы клиентов</h2>
+        </div>
+        <div class="testimonial-slider">
+          <div class="testimonial-container">
+            <div class="testimonial">
+              <img
+                src="https://randomuser.me/api/portraits/women/45.jpg"
+                alt="Марина"
+                class="testimonial-avatar"
+              />
+              <p class="testimonial-text">
+                "Заказали пластиковые окна в новой квартире. Установили за один
+                день, бригада работала аккуратно и профессионально. Окнами очень
+                довольны, в квартире стало значительно теплее и тише."
+              </p>
+              <p class="testimonial-author">Марина, Москва</p>
+            </div>
+            <div class="testimonial">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="Дмитрий"
+                class="testimonial-avatar"
+              />
+              <p class="testimonial-text">
+                "Установил входную дверь от Гарант Пласт. Порадовало качество
+                материалов и сборки. Монтажники приехали вовремя, установили
+                быстро и чисто. Дверь отлично держит тепло и не пропускает шум с
+                лестничной площадки."
+              </p>
+              <p class="testimonial-author">Дмитрий, Санкт-Петербург</p>
+            </div>
+            <div class="testimonial">
+              <img
+                src="https://randomuser.me/api/portraits/women/68.jpg"
+                alt="Ольга"
+                class="testimonial-avatar"
+              />
+              <p class="testimonial-text">
+                "Заказывали витражи для офиса. Получилось очень стильно и
+                современно. Сроки изготовления соблюдены, монтаж выполнен
+                качественно. Сотрудники компании профессиональны и внимательны к
+                деталям."
+              </p>
+              <p class="testimonial-author">Ольга, Екатеринбург</p>
+            </div>
+          </div>
+          <div class="slider-nav">
+            <div class="slider-btn testimonial-prev">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider-btn testimonial-next">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Контакты</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info-box">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Адрес офиса</h4>
+                <p>г. Бишкек, ул. Он-Арча 44А</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div class="contact-text">
+                <h4>Телефон</h4>
+                <p>+996 776-45-69-21</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p>info@garantplast.ru</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-clock"></i></div>
+              <div class="contact-text">
+                <h4>Часы работы</h4>
+                <p>
+                  Пн-Пт: 9:00 - 19:00<br />Сб: 10:00 - 17:00<br />Вс: выходной
+                </p>
+              </div>
+            </div>
+            <div class="policy-text">
+              <p>
+                Для обеспечения высокого качества обслуживания все заказы
+                принимаются исключительно при личной встрече в нашем офисе.
+              </p>
+            </div>
+          </div>
+          <div class="contact-map">
+            <iframe
+              src="https://www.google.com/maps?q=Он-Арча+44А,+Бишкек,+Кыргызстан&output=embed&t=&z=17&ie=UTF8&ll=41.221120,74.611197"
+              width="100%"
+              height="400"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <a href="#" class="logo">
+              <div class="logo-text" style="color: white">
+                Гарант<span style="color: var(--primary)">Пласт</span>
+              </div>
+            </a>
+            <p>
+              Производство качественных окон, дверей и витражей с 2007 года.
+              Низкие цены без посредников.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-telegram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Продукция</h4>
+            <ul>
+              <li><a href="#">Пластиковые окна</a></li>
+              <li><a href="#">Входные двери</a></li>
+              <li><a href="#">Межкомнатные двери</a></li>
+              <li><a href="#">Витражи</a></li>
+              <li><a href="#">Подоконники</a></li>
+              <li><a href="#">Москитные сетки</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Компания</h4>
+            <ul>
+              <li><a href="#about">О нас</a></li>
+              <li><a href="#features">Преимущества</a></li>
+              <li><a href="#calculator">Калькулятор</a></li>
+              <li><a href="#contact">Контакты</a></li>
+              <li><a href="#">Вакансии</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Контакты</h4>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> г. Бишкек, ул. Он-Арча 44А
+              </li>
+              <li><i class="fas fa-phone"></i> +996 776-45-69-21</li>
+              <li><i class="fas fa-envelope"></i> info@garantplast.ru</li>
+              <li>
+                <i class="fas fa-clock"></i> Пн-Пт: 9:00-19:00, Сб: 10:00-17:00
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Гарант Пласт. Все права защищены.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let isMenuOpen = false;
+
+        // Анимация уменьшения хедера при скролле
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", function () {
+          if (isMenuOpen) return; // Отключаем анимацию при открытом меню
+
+          if (window.scrollY > 100) {
+            header.classList.add("shrink");
+          } else {
+            header.classList.remove("shrink");
+          }
+        });
+
+        document.querySelectorAll("section").forEach((section) => {
+          section.style.paddingTop = "100px"; // или var(--header-height)
+        });
+        // Мобильное меню
+        const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+        const mobileMenu = document.querySelector(".mobile-menu");
+
+        mobileMenuBtn.addEventListener("click", function () {
+          isMenuOpen = !isMenuOpen;
+          mobileMenu.classList.toggle("active");
+          mobileMenuBtn.innerHTML = mobileMenu.classList.contains("active")
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+        });
+
+        // Закрытие мобильного меню при клике на ссылку
+        document.querySelectorAll(".mobile-menu a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          });
+        });
+
+        // Анимации при скролле
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+              } else {
+                entry.target.classList.remove("animate");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        // Наблюдаем за всеми элементами, которые должны анимироваться
+        document
+          .querySelectorAll(
+            ".feature-card, .step, .calculator-form, .calculator-result, .contact-info-box, .testimonial"
+          )
+          .forEach((element) => {
+            observer.observe(element);
+          });
+
+        // Слайдер продукции
+        const sliderContainer = document.querySelector(".slider-container");
+        const slides = document.querySelectorAll(".slide");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+        const dots = document.querySelectorAll(".dot");
+
+        let currentSlide = 0;
+        const slideCount = slides.length;
+
+        function goToSlide(index) {
+          sliderContainer.style.transform = `translateX(-${index * 100}%)`;
+          currentSlide = index;
+
+          // Обновление точек
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+          });
+        }
+
+        // nextBtn.addEventListener("click", () => {
+        //   currentSlide = (currentSlide + 1) % slideCount;
+        //   goToSlide(currentSlide);
+        // });
+
+        // prevBtn.addEventListener("click", () => {
+        //   currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        //   goToSlide(currentSlide);
+        // });
+        nextBtn.addEventListener("click", () => {
+          currentSlide = (currentSlide + 1) % slideCount;
+          goToSlide(currentSlide);
+        });
+
+        prevBtn.addEventListener("click", () => {
+          currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+          goToSlide(currentSlide);
+        });
+        // Навигация по точкам
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+          });
+        });
+
+        // Автоматическое перелистывание
+        setInterval(() => {
+          currentSlide = (currentSlide + 1) % slideCount;
+          goToSlide(currentSlide);
+        }, 5000);
+
+        // Слайдер отзывов
+        const testimonialContainer = document.querySelector(
+          ".testimonial-container"
+        );
+        const testimonials = document.querySelectorAll(".testimonial");
+        const testimonialPrev = document.querySelector(".testimonial-prev");
+        const testimonialNext = document.querySelector(".testimonial-next");
+
+        let currentTestimonial = 0;
+        const testimonialCount = testimonials.length;
+
+        function goToTestimonial(index) {
+          testimonialContainer.style.transform = `translateX(-${index * 100}%)`;
+          currentTestimonial = index;
+        }
+
+        testimonialNext.addEventListener("click", () => {
+          currentTestimonial = (currentTestimonial + 1) % testimonialCount;
+          goToTestimonial(currentTestimonial);
+        });
+
+        testimonialPrev.addEventListener("click", () => {
+          currentTestimonial =
+            (currentTestimonial - 1 + testimonialCount) % testimonialCount;
+          goToTestimonial(currentTestimonial);
+        });
+
+        // Автоматическое перелистывание отзывов
+        setInterval(() => {
+          currentTestimonial = (currentTestimonial + 1) % testimonialCount;
+          goToTestimonial(currentTestimonial);
+        }, 7000);
+
+        // Калькулятор
+        const widthSlider = document.getElementById("width");
+        const heightSlider = document.getElementById("height");
+        const widthValue = document.getElementById("width-value");
+        const heightValue = document.getElementById("height-value");
+        const calculateBtn = document.getElementById("calculate-btn");
+        const priceDisplay = document.querySelector(".price-display");
+
+        widthSlider.addEventListener("input", () => {
+          widthValue.textContent = widthSlider.value;
+        });
+
+        heightSlider.addEventListener("input", () => {
+          heightValue.textContent = heightSlider.value;
+        });
+
+        calculateBtn.addEventListener("click", () => {
+          // Простая логика расчета
+          const width = parseInt(widthSlider.value);
+          const height = parseInt(heightSlider.value);
+          const area = (width * height) / 10000; // м²
+
+          // Базовые цены для разных типов изделий
+          const basePrices = {
+            window: 5000,
+            door: 10000,
+            "interior-door": 8000,
+            "stained-glass": 7000,
+            windowsill: 2000,
+            "mosquito-net": 1500,
+          };
+
+          const productType = document.getElementById("product-type").value;
+          const basePrice = basePrices[productType];
+
+          // Расчет стоимости
+          let price = basePrice * area;
+
+          // Корректировки
+          const material = document.getElementById("material").value;
+          if (material === "aluminum") price *= 1.3;
+          if (material === "wood") price *= 1.5;
+          if (material === "composite") price *= 1.8;
+
+          const color = document.getElementById("color").value;
+          if (color === "wood") price *= 1.2;
+          if (color === "colored") price *= 1.3;
+
+          // Форматирование и отображение
+          price = Math.round(price / 100) * 100;
+          priceDisplay.textContent = price.toLocaleString("ru-RU") + " ₽";
+
+          // Анимация изменения цены
+          priceDisplay.style.transform = "scale(1.1)";
+          setTimeout(() => {
+            priceDisplay.style.transform = "scale(1)";
+          }, 300);
+        });
+
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              // Рассчитываем отступ с учетом высоты хедера
+              const headerHeight = header.clientHeight;
+              const targetPosition =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight;
+
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+
+              // Закрываем мобильное меню после клика
+              if (mobileMenu.classList.contains("active")) {
+                mobileMenu.classList.remove("active");
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+              }
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
-
