@@ -3,7 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Гарант Пласт</title>
+    <meta
+      name="description"
+      content="Производство пластиковых окон, дверей и витражей в Бишкеке. Прямые цены от производителя, гарантия качества, быстрый монтаж."
+    />
+    <meta
+      name="keywords"
+      content="пластиковые окна, двери, витражи, производство окон, установка окон, Бишкек"
+    />
+    <meta name="author" content="Гарант Пласт" />
+    <link rel="canonical" href="https://garantplast.kg" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta
+      property="og:title"
+      content="Производство пластиковых окон и дверей в Бишкеке - Гарант Пласт"
+    />
+    <meta
+      property="og:description"
+      content="Высокое качество, низкие цены без посредников, доставка и монтаж за 1 день"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://garantplast.kg" />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Производство пластиковых окон и дверей в Бишкеке - Гарант Пласт"
+    />
+    <meta
+      name="twitter:description"
+      content="Высокое качество, низкие цены без посредников, доставка и монтаж за 1 день"
+    />
+    <meta
+      name="twitter:image"
+      content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80"
+    />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="KG-B" />
+    <meta name="geo.placename" content="Бишкек" />
+    <meta name="geo.position" content="41.221120;74.611197" />
+    <meta name="ICBM" content="41.221120, 74.611197" />
+
+    <title>
+      Производство пластиковых окон и дверей в Бишкеке - Гарант Пласт
+    </title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -12,6 +62,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         --primary: #ff5a5f;
@@ -43,6 +94,7 @@
         line-height: 1.6;
         overflow-x: hidden;
         padding-top: var(--header-height);
+        background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
       }
 
       .container {
@@ -57,7 +109,7 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background-color: rgba(255, 255, 255, 1);
+        background-color: rgba(255, 255, 255, 0.98);
         box-shadow: var(--shadow);
         z-index: 1000;
         transition: var(--transition);
@@ -66,6 +118,11 @@
         align-items: center;
         left: 0;
         right: 0;
+        transform: translateY(0);
+      }
+
+      header.hide {
+        transform: translateY(-100%);
       }
 
       header.shrink {
@@ -210,24 +267,44 @@
         align-items: center;
         text-align: center;
         color: white;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 90, 95, 0.2) 0%,
+          rgba(0, 132, 137, 0.2) 100%
+        );
+        opacity: 0.3;
       }
 
       .hero-content {
         max-width: 800px;
         margin: 0 auto;
         animation: fadeInUp 1s ease-out;
+        position: relative;
+        z-index: 2;
       }
 
       .hero h1 {
         font-size: 3.5rem;
         margin-bottom: 20px;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1s ease-out, pulse 3s infinite alternate;
       }
 
       .hero p {
         font-size: 1.5rem;
         margin-bottom: 30px;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1.2s ease-out;
       }
 
       .hero-btns {
@@ -235,11 +312,20 @@
         justify-content: center;
         gap: 20px;
         margin-top: 30px;
+        animation: fadeInUp 1.4s ease-out;
       }
 
       /* Features Section */
       .section {
         padding: 100px 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .section.animate {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .section-title {
@@ -264,6 +350,7 @@
         height: 4px;
         background: var(--primary);
         border-radius: 2px;
+        animation: growLine 1.5s ease-out;
       }
 
       .features-grid {
@@ -299,6 +386,11 @@
         font-size: 50px;
         color: var(--primary);
         margin-bottom: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover .feature-icon {
+        transform: scale(1.1) rotate(5deg);
       }
 
       .feature-card h3 {
@@ -335,6 +427,11 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 5s ease;
+      }
+
+      .slide:hover .slide-img {
+        transform: scale(1.05);
       }
 
       .slide-content {
@@ -345,6 +442,14 @@
         background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
         color: white;
         padding: 30px;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+
+      .slide:hover .slide-content {
+        transform: translateY(0);
+        opacity: 1;
       }
 
       .slide-content h3 {
@@ -374,10 +479,13 @@
         cursor: pointer;
         transition: var(--transition);
         font-size: 1.2rem;
+        opacity: 0.7;
       }
 
       .slider-btn:hover {
         background: white;
+        opacity: 1;
+        transform: scale(1.1);
       }
 
       .slider-dots {
@@ -398,6 +506,7 @@
 
       .dot.active {
         background: var(--primary);
+        transform: scale(1.3);
       }
 
       /* Calculator */
@@ -466,6 +575,13 @@
         border-radius: 8px;
         font-family: "Montserrat", sans-serif;
         font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      select:focus,
+      input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.2);
       }
 
       .range-container {
@@ -478,6 +594,12 @@
         min-width: 50px;
         text-align: center;
         font-weight: 600;
+        transition: transform 0.3s ease;
+      }
+
+      input[type="range"]:hover + .range-value {
+        transform: scale(1.1);
+        color: var(--primary);
       }
 
       /* How It Works */
@@ -497,6 +619,7 @@
         height: 3px;
         background: var(--border);
         z-index: 1;
+        animation: growLine 2s ease-out;
       }
 
       .step {
@@ -539,6 +662,11 @@
         color: white;
         font-size: 30px;
         box-shadow: 0 6px 15px rgba(255, 90, 95, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .step:hover .step-icon {
+        transform: translateY(-5px) rotate(5deg);
       }
 
       .step h3 {
@@ -586,12 +714,37 @@
         object-fit: cover;
         margin: 0 auto 20px;
         border: 3px solid var(--primary);
+        transition: transform 0.3s ease;
+      }
+
+      .testimonial:hover .testimonial-avatar {
+        transform: scale(1.05);
       }
 
       .testimonial-text {
         font-style: italic;
         margin-bottom: 20px;
         font-size: 1.1rem;
+        position: relative;
+      }
+
+      .testimonial-text::before,
+      .testimonial-text::after {
+        content: '"';
+        font-size: 2rem;
+        color: var(--primary);
+        opacity: 0.3;
+        position: absolute;
+      }
+
+      .testimonial-text::before {
+        top: -15px;
+        left: -15px;
+      }
+
+      .testimonial-text::after {
+        bottom: -25px;
+        right: -15px;
       }
 
       .testimonial-author {
@@ -599,7 +752,7 @@
         color: var(--primary);
       }
 
-      /* Contact */
+      /* Contact Section */
       .contact-grid {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -614,10 +767,8 @@
         border-radius: 12px;
         box-shadow: var(--shadow);
         text-align: center;
-      }
-
-      .contact-map {
-        max-width: 1200px;
+        opacity: 0;
+        transform: translateY(30px);
       }
 
       .contact-info-box.animate {
@@ -626,16 +777,41 @@
         transition: opacity 0.6s ease, transform 0.6s ease;
       }
 
+      .contact-map {
+        max-width: 1200px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .contact-map.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease 0.2s;
+      }
+
       .contact-item {
         display: flex;
         margin-bottom: 20px;
         justify-content: center;
+        transition: transform 0.3s ease;
+      }
+
+      .contact-item:hover {
+        transform: translateX(5px);
       }
 
       .contact-icon {
         min-width: 40px;
         font-size: 20px;
         color: var(--primary);
+        transition: transform 0.3s ease;
+      }
+
+      .contact-item:hover .contact-icon {
+        transform: scale(1.2);
       }
 
       .contact-text {
@@ -658,6 +834,7 @@
         width: 60px;
         height: 3px;
         background: var(--primary);
+        animation: growLine 1.5s ease-out;
       }
 
       .policy-text {
@@ -666,6 +843,12 @@
         padding: 15px;
         background: rgba(255, 90, 95, 0.1);
         border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .policy-text:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
 
       /* Footer */
@@ -673,6 +856,19 @@
         background: var(--dark);
         color: white;
         padding: 60px 0 30px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+        opacity: 0.1;
       }
 
       .footer-grid {
@@ -680,6 +876,8 @@
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 40px;
         margin-bottom: 40px;
+        position: relative;
+        z-index: 2;
       }
 
       .footer-col h4 {
@@ -705,6 +903,11 @@
 
       .footer-col li {
         margin-bottom: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .footer-col li:hover {
+        transform: translateX(5px);
       }
 
       .footer-col a {
@@ -746,9 +949,72 @@
         padding-top: 30px;
         border-top: 1px solid #444444;
         color: #bbbbbb;
+        position: relative;
+        z-index: 2;
+      }
+
+
+      /* FAQ Section */
+      .faq-section {
+        background-color: var(--light);
+        padding: 80px 0;
+      }
+
+      .faq-item {
+        margin-bottom: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .faq-question {
+        padding: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+      }
+
+      .faq-question::after {
+        content: "+";
+        font-size: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .faq-question.active::after {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .faq-answer.show {
+        padding: 0 20px 20px;
+        max-height: 500px;
       }
 
       /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -760,6 +1026,24 @@
         }
       }
 
+      @keyframes growLine {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.02);
+        }
+      }
+
       /* Mobile Menu */
       .mobile-menu-btn {
         display: none;
@@ -768,6 +1052,11 @@
         font-size: 24px;
         cursor: pointer;
         color: var(--dark);
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu-btn:hover {
+        transform: rotate(90deg);
       }
 
       .mobile-menu {
@@ -981,10 +1270,11 @@
       </div>
     </div>
 
+
     <!-- Hero Section -->
     <section class="hero">
       <div class="container hero-content">
-        <h1>Производство окон, дверей и витражей с 2007 года</h1>
+        <h1>Производство окон, дверей и витражей в Бишкеке с 2007 года</h1>
         <p>
           Высокое качество, низкие цены без посредников, доставка и монтаж за 1
           день
@@ -1044,7 +1334,7 @@
             <div class="slide">
               <img
                 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80"
-                alt="Окна"
+                alt="Пластиковые окна в Бишкеке - Гарант Пласт"
                 class="slide-img"
               />
               <div class="slide-content">
@@ -1055,7 +1345,7 @@
             <div class="slide">
               <img
                 src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1452&q=80"
-                alt="Двери"
+                alt="Входные и межкомнатные двери в Бишкеке"
                 class="slide-img"
               />
               <div class="slide-content">
@@ -1066,7 +1356,7 @@
             <div class="slide">
               <img
                 src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                alt="Витражи"
+                alt="Витражи в Бишкеке от Гарант Пласт"
                 class="slide-img"
               />
               <div class="slide-content">
@@ -1198,6 +1488,67 @@
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Частые вопросы</h2>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Сколько времени занимает изготовление окон?</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Стандартные пластиковые окна изготавливаются в течение 5-7 рабочих
+              дней. Сроки могут меняться в зависимости от сложности заказа и
+              сезонной загрузки производства.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Даете ли вы гарантию на изделия?</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Да, мы предоставляем гарантию 5 лет на все изделия и 2 года на
+              монтажные работы. Гарантийные обязательства фиксируются в
+              договоре.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Можно ли заказать установку окон в выходные дни?</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Да, мы работаем по субботам с 10:00 до 17:00. Установка в
+              воскресенье возможна по предварительной договоренности за
+              дополнительную плату.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Какие профильные системы вы используете?</span>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Мы работаем с профилями Rehau, KBE и Veka - ведущими
+              производителями в индустрии пластиковых окон. Все профили имеют
+              сертификаты качества.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section class="section testimonials">
       <div class="container">
@@ -1206,46 +1557,87 @@
         </div>
         <div class="testimonial-slider">
           <div class="testimonial-container">
-            <div class="testimonial">
+            <div
+              class="testimonial"
+              itemscope
+              itemtype="https://schema.org/Review"
+            >
               <img
                 src="https://randomuser.me/api/portraits/women/45.jpg"
-                alt="Марина"
+                alt="Отзыв Марины о пластиковых окнах"
                 class="testimonial-avatar"
               />
-              <p class="testimonial-text">
+              <p class="testimonial-text" itemprop="reviewBody">
                 "Заказали пластиковые окна в новой квартире. Установили за один
                 день, бригада работала аккуратно и профессионально. Окнами очень
                 довольны, в квартире стало значительно теплее и тише."
               </p>
-              <p class="testimonial-author">Марина, Москва</p>
+              <p class="testimonial-author" itemprop="author">Марина, Бишкек</p>
+              <div
+                itemprop="reviewRating"
+                itemscope
+                itemtype="https://schema.org/Rating"
+                style="display: none"
+              >
+                <meta itemprop="ratingValue" content="5" />
+                <meta itemprop="bestRating" content="5" />
+              </div>
             </div>
-            <div class="testimonial">
+            <div
+              class="testimonial"
+              itemscope
+              itemtype="https://schema.org/Review"
+            >
               <img
                 src="https://randomuser.me/api/portraits/men/32.jpg"
-                alt="Дмитрий"
+                alt="Отзыв Дмитрия о входных дверях"
                 class="testimonial-avatar"
               />
-              <p class="testimonial-text">
+              <p class="testimonial-text" itemprop="reviewBody">
                 "Установил входную дверь от Гарант Пласт. Порадовало качество
                 материалов и сборки. Монтажники приехали вовремя, установили
                 быстро и чисто. Дверь отлично держит тепло и не пропускает шум с
                 лестничной площадки."
               </p>
-              <p class="testimonial-author">Дмитрий, Санкт-Петербург</p>
+              <p class="testimonial-author" itemprop="author">
+                Дмитрий, Бишкек
+              </p>
+              <div
+                itemprop="reviewRating"
+                itemscope
+                itemtype="https://schema.org/Rating"
+                style="display: none"
+              >
+                <meta itemprop="ratingValue" content="5" />
+                <meta itemprop="bestRating" content="5" />
+              </div>
             </div>
-            <div class="testimonial">
+            <div
+              class="testimonial"
+              itemscope
+              itemtype="https://schema.org/Review"
+            >
               <img
                 src="https://randomuser.me/api/portraits/women/68.jpg"
-                alt="Ольга"
+                alt="Отзыв Ольги о витражах"
                 class="testimonial-avatar"
               />
-              <p class="testimonial-text">
+              <p class="testimonial-text" itemprop="reviewBody">
                 "Заказывали витражи для офиса. Получилось очень стильно и
                 современно. Сроки изготовления соблюдены, монтаж выполнен
                 качественно. Сотрудники компании профессиональны и внимательны к
                 деталям."
               </p>
-              <p class="testimonial-author">Ольга, Екатеринбург</p>
+              <p class="testimonial-author" itemprop="author">Ольга, Бишкек</p>
+              <div
+                itemprop="reviewRating"
+                itemscope
+                itemtype="https://schema.org/Rating"
+                style="display: none"
+              >
+                <meta itemprop="ratingValue" content="5" />
+                <meta itemprop="bestRating" content="5" />
+              </div>
             </div>
           </div>
           <div class="slider-nav">
@@ -1316,6 +1708,7 @@
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
+              title="Карта с расположением офиса Гарант Пласт в Бишкеке"
             >
             </iframe>
           </div>
